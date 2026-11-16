@@ -1,11 +1,11 @@
 <!--
 	How this Storybook is laid out, as one column in sidebar order: each section is a stop on a rail, with its icon, what
-	it holds and the pages under it, as in the sidebar. Introduction is marked as where you are, in cinder; Agents and
-	Philosophy are paired as the rules and the reasons; the brand's stop carries the icon.
+	it holds and the pages under it, as in the sidebar. Introduction is marked as where you are, in cinder; the brand's stop
+	carries the icon.
 -->
 <script lang="ts">
 	import { PATHS, SIZE } from '../brand/logo-showcase/lib/logo';
-	import { BookOpen, Bot, Lightbulb, Megaphone } from '@lucide/svelte';
+	import { BookOpen, Bot, Megaphone } from '@lucide/svelte';
 
 	const sections = [
 		{
@@ -22,22 +22,16 @@
 			pages: ['Brand guidelines']
 		},
 		{
-			holds: 'The reasons, for people',
-			icon: Lightbulb,
-			name: 'Philosophy',
-			pages: ['Product']
-		},
-		{
 			holds: 'The logo, its files, the type and the colours',
 			icon: null,
 			name: 'Brand',
 			pages: ['Logo', 'Typography', 'Colors']
 		},
 		{
-			holds: 'Posts, posters, link previews, swag',
+			holds: 'Posts, store screenshots, link previews, swag',
 			icon: Megaphone,
 			name: 'Communications',
-			pages: ['Foundations', 'Elements', 'Modules', 'Key visuals', 'Applications']
+			pages: ['Direction', 'Foundations', 'Elements', 'Modules', 'Key visuals', 'Applications']
 		}
 	];
 </script>

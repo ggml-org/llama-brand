@@ -49,6 +49,7 @@
 		"@vitest/browser-playwright": "4.1.12",
 		"mdsvex": "0.12.7",
 		"mode-watcher": "1.1.0",
+		"modern-screenshot": "4.7.0",
 		"playwright": "1.56.1",
 		"prettier": "3.8.3",
 		"prettier-plugin-svelte": "4.1.0",

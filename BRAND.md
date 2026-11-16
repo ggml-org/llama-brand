@@ -5,10 +5,10 @@ release images, video thumbnails, link previews, banners and any other piece the
 agents first (Claude Design reads it as the README of the Llama design system) and for people too.
 
 **The Storybook is the source of truth.** Every rule here is drawn there with the real fonts, tokens and
-components, under **Communications** (Foundations, Elements, Modules, Key visuals, Applications), **Brand** (Logo,
-Typography, Colors) and **Philosophy**, in this repository's Storybook (`npm run storybook`). The pages that show
-Llama Chat itself (Communications' Direction, the store screenshots and scenes, and Philosophy's Ideology and Design)
-are in llama.cpp's Storybook, next to the app. When this file and the Storybook disagree, the Storybook wins. This
+components, under **Communications** (Direction, Foundations, Elements, Modules, Key visuals, Applications) and
+**Brand** (Logo, Typography, Colors), in this repository's Storybook (`npm run storybook`); where a page shows Llama
+Chat itself, it is an image of the real app. The reasons, **Philosophy**, are in llama.cpp's Storybook, next to the
+apps they are about. When this file and the Storybook disagree, the Storybook wins. This
 file lives at `BRAND.md` in llama-brand; the Llama design system in Claude is exported from it and from the
 Storybook by `npm run export:design-system`. The how of Llama Chat's own UI is `ui/apps/chat/DESIGN.md` in llama.cpp.
 

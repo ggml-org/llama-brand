@@ -5,9 +5,9 @@
 -->
 
 <script>
-	import Figure from '../philosophy/Figure.svelte';
+	import Figure from './lib/Figure.svelte';
 	import Principles from './Principles.svelte';
-	import Products from '../philosophy/figures/Products.svelte';
+	import Products from './lib/Products.svelte';
 	import Sections from './Sections.svelte';
 	import Stack from './Stack.svelte';
 	import Uses from './Uses.svelte';
@@ -35,7 +35,7 @@ The brand that every Llama product is built on, next to the files it draws: the 
 
 ## How we think
 
-The short version of **Philosophy**; the reasons are in **Product** here, and in **Ideology** and **Design** in llama.cpp's Storybook.
+The short version of **Philosophy**; the reasons, **Ideology**, **Product** and **Design**, are in llama.cpp's Storybook, next to the apps they are about.
 
 <Figure n={3} caption="Five ideas, each drawn with the real system: the devices a model runs on, the first run's recommendation, the three places the character lives, a control on its grid and one token chain.">
 	<Principles />
@@ -47,7 +47,7 @@ The short version of **Philosophy**; the reasons are in **Product** here, and in
 	<Products />
 </Figure>
 
-The pages that show Llama Chat itself (Communications' direction, the store screenshots and scenes, and Philosophy's Ideology and Design) are in llama.cpp's Storybook, next to the app, and so are Llama UI's components and tokens.
+Where a page here shows Llama Chat itself (the mood board, the store screenshots and their scenes), it is an image of the real app, captured in llama.cpp's Storybook, where Llama UI's components and tokens live too.
 
 ## How it's laid out
 

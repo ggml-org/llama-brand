@@ -22,15 +22,13 @@ const preview: Preview = {
 		},
 
 		options: {
-			// sidebar sections: the introduction, the brand book for agents, the philosophy, the brand (logo, type,
-			// colour), then communications
+			// sidebar sections: the introduction, the brand book for agents, the brand (logo, type, colour), then
+			// communications
 			storySort: {
 				order: [
 					'Introduction',
 					'Agents',
 					['Brand guidelines'],
-					'Philosophy',
-					['Product'],
 					'Brand',
 					[
 						'Logo',
@@ -55,6 +53,8 @@ const preview: Preview = {
 					],
 					'Communications',
 					[
+						'Direction',
+						['Principles', 'Mood board', 'Specimen boards'],
 						'Foundations',
 						['Formats and grid', 'Grounds', 'Type'],
 						'Elements',
@@ -64,7 +64,16 @@ const preview: Preview = {
 						'Key visuals',
 						['Statement', 'Product', 'Roster', 'Bulletin', 'Numeral', 'Receipt'],
 						'Applications',
-						['Model drop', "What's new", 'Link previews', 'Open models poster', 'Swag']
+						[
+							'Model drop',
+							"What's new",
+							'Link previews',
+							'Open models poster',
+							'Microsoft Store',
+							'Mac App Store',
+							'Store scenes',
+							'Swag'
+						]
 					]
 				]
 			}
