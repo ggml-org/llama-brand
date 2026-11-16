@@ -6,7 +6,9 @@ Official brand assets for **Llama.app** and **llama.cpp**: the logo, the Llama t
 logo/     the icon, the lockups, the covers, app icons and social profiles as SVG, WebP and PNG, plus the logo showcase
 fonts/    Llama Sans and Llama Mono, their build scripts and the specimen
 css/      the colours, the font faces, and communications' grounds and type scale
-readme/   this README's artwork: cards built from the fonts and the colours, and the logo in use, rendered from the design system
+readme/   this README's artwork: cards built from the fonts and the colours, and the logo in use, rendered from the Storybook
+stories/  the Storybook: the brand, its philosophy and communications, drawn with the files above
+BRAND.md  the brand book, written for agents first
 ```
 
 Install it from GitHub and import files by path:
@@ -230,6 +232,22 @@ css/communications.css   the grounds and the type scale for posts, posters, boar
 Communications measure everything in `--u`, a 24th of the format's short side (45px on a 1080 × 1080 post), which the layout sets. A piece takes `.ground` and one of `.ground-light`, `.ground-dark`, `.ground-sand`, `.ground-day` or `.ground-night`, which set its background and inks (`--p-ink`, `--p-muted`, `--p-line` and the rest). Its text takes the type scale: `.t-label`, `.t-body`, `.t-lede`, `.t-headline`, `.t-display`, `.t-figure` and `.t-mono`.
 
 The llama.cpp web UI's design system builds on the same colours, with the same names, and adds what only an interface needs: status colours, translucent whites and blacks, and its type, length and radius scales.
+
+---
+
+## Storybook
+
+The brand is drawn in a Storybook with its own files and the components Llama Chat is built from ([`@ggml/llama-ui`](https://www.npmjs.com/package/@ggml/llama-ui)): the logo (its geometry, lockups, usage and every file to download), Llama Sans and Llama Mono, the colours, the reasoning behind what the brand makes, and how posts, posters, release images, link previews and swag are put together. [`BRAND.md`](./BRAND.md) is the brand book for agents, and the Storybook is the source of truth it points to.
+
+```bash
+npm ci
+npm run storybook            # on port 6006
+npm run test:ui              # every story, in a headless browser
+npm run export:brand-readme  # this README's artwork, into readme/
+npm run export:design-system # the Llama design system for Claude, into design-system-export/
+```
+
+The pages that show Llama Chat itself (Communications' direction, the store screenshots and scenes, and the ideology and design philosophy) are in [llama.cpp's Storybook](https://github.com/ggml-org/llama.cpp/tree/master/ui/apps/chat), next to the app.
 
 ---
 
