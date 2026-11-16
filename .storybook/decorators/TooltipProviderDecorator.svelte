@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as Tooltip from '@ggml/llama-ui/ui/tooltip';
+	import * as Tooltip from '@ggml-org/llama-ui/ui/tooltip';
 
 	interface Props {
 		children: any;

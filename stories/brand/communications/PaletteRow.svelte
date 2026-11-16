@@ -9,7 +9,7 @@
 	import chatDark from './store/app/chat-dark.png';
 	import chatLight from './store/app/chat-light.png';
 	import type { Palette } from './palettes';
-	import { Badge } from '@ggml/llama-ui/ui/badge';
+	import { Badge } from '@ggml-org/llama-ui/ui/badge';
 	import { ChevronRight, Clock, Download, Eye, Gauge, Hash, Mic } from '@lucide/svelte';
 
 	let { palette }: { palette: Palette } = $props();

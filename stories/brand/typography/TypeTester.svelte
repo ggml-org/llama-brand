@@ -5,9 +5,9 @@
 -->
 <script lang="ts">
 	import { specimen } from '../llama-sans/lib/specimen';
-	import { Label } from '@ggml/llama-ui/ui/label';
-	import { Switch } from '@ggml/llama-ui/ui/switch';
-	import * as ToggleGroup from '@ggml/llama-ui/ui/toggle-group';
+	import { Label } from '@ggml-org/llama-ui/ui/label';
+	import { Switch } from '@ggml-org/llama-ui/ui/switch';
+	import * as ToggleGroup from '@ggml-org/llama-ui/ui/toggle-group';
 
 	const { axis } = specimen;
 

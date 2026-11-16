@@ -5,8 +5,8 @@
 -->
 <script lang="ts">
 	import { PATHS, SIZE } from '../brand/logo-showcase/lib/logo';
-	import { Badge } from '@ggml/llama-ui/ui/badge';
-	import { Button } from '@ggml/llama-ui/ui/button';
+	import { Badge } from '@ggml-org/llama-ui/ui/badge';
+	import { Button } from '@ggml-org/llama-ui/ui/button';
 	import { Laptop, Lock, Monitor, Smartphone, UserX, WifiOff } from '@lucide/svelte';
 </script>
 

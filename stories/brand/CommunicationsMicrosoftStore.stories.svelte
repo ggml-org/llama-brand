@@ -14,7 +14,7 @@
 	import Variants from './communications/posts/Variants.svelte';
 	import StoreArt from './communications/store/StoreArt.svelte';
 	import StoreScreenshot from './communications/store/StoreScreenshot.svelte';
-	import { SyntaxHighlightedCode } from '@ggml/llama-ui';
+	import { SyntaxHighlightedCode } from '@ggml-org/llama-ui';
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 
 	// The Microsoft Store listing: the logos (the app tile and the poster art), the super hero art at the top of the

@@ -4,7 +4,7 @@
 	when the brand repo's logos change.
 -->
 <script lang="ts">
-	import { Button } from '@ggml/llama-ui/ui/button';
+	import { Button } from '@ggml-org/llama-ui/ui/button';
 	import { Download } from '@lucide/svelte';
 
 	interface Props {

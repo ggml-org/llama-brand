@@ -8,7 +8,7 @@
 	import { type Ground, macAppStore, type MacAppStoreCopy } from './communications/posts/post';
 	import Variants from './communications/posts/Variants.svelte';
 	import StoreScreenshot from './communications/store/StoreScreenshot.svelte';
-	import { SyntaxHighlightedCode } from '@ggml/llama-ui';
+	import { SyntaxHighlightedCode } from '@ggml-org/llama-ui';
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 
 	// The Mac App Store listing: screenshots at 16:10 (2880 × 1800, a 1440 × 900 screen at 2x), each one thing Llama for

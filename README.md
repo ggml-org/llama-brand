@@ -237,7 +237,7 @@ The llama.cpp web UI's design system builds on the same colours, with the same n
 
 ## Storybook
 
-The brand is drawn in a Storybook with its own files and the components Llama Chat is built from ([`@ggml/llama-ui`](https://www.npmjs.com/package/@ggml/llama-ui)): the logo (its geometry, lockups, usage and every file to download), Llama Sans and Llama Mono, the colours, and how posts, posters, store screenshots, release images, link previews and swag are put together. [`BRAND.md`](./BRAND.md) is the brand book for agents, and the Storybook is the source of truth it points to.
+The brand is drawn in a Storybook with its own files and the components Llama Chat is built from ([`@ggml-org/llama-ui`](https://www.npmjs.com/package/@ggml-org/llama-ui)): the logo (its geometry, lockups, usage and every file to download), Llama Sans and Llama Mono, the colours, and how posts, posters, store screenshots, release images, link previews and swag are put together. [`BRAND.md`](./BRAND.md) is the brand book for agents, and the Storybook is the source of truth it points to.
 
 ```bash
 npm ci

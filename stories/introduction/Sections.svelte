@@ -5,7 +5,7 @@
 -->
 <script lang="ts">
 	import { PATHS, SIZE } from '../brand/logo-showcase/lib/logo';
-	import { BookOpen, Bot, Megaphone } from '@lucide/svelte';
+	import { BookOpen, Bot, Megaphone, Shapes } from '@lucide/svelte';
 
 	const sections = [
 		{
@@ -32,6 +32,12 @@
 			icon: Megaphone,
 			name: 'Communications',
 			pages: ['Direction', 'Foundations', 'Elements', 'Modules', 'Key visuals', 'Applications']
+		},
+		{
+			holds: 'Variations side by side, before one is chosen',
+			icon: Shapes,
+			name: 'Scrapbook',
+			pages: ['Communications']
 		}
 	];
 </script>

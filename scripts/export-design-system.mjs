@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Llama UI, where the tokens and the fonts live
-const UI_LIB = path.resolve(ROOT, 'node_modules/@ggml/llama-ui/dist');
+const UI_LIB = path.resolve(ROOT, 'node_modules/@ggml-org/llama-ui/dist');
 const SPACE = 'https://huggingface.co/spaces/ggml-org/llama-storybook';
 const args = process.argv.slice(2);
 const flag = (name, fallback) => {
@@ -324,7 +324,7 @@ function tokens() {
 	return {
 		color: { themes: [{ id: 'light', name: 'Light' }], tokens: color },
 		meta: {
-			note: "Exported from ggml-org/llama-brand (@ggml/llama-ui's styles/tokens/primitives.css, the communications grounds and type scale) by scripts/export-design-system.mjs.",
+			note: "Exported from ggml-org/llama-brand (@ggml-org/llama-ui's styles/tokens/primitives.css, the communications grounds and type scale) by scripts/export-design-system.mjs.",
 			package: 'llama-brand',
 			repo: 'ggml-org/llama.cpp',
 			source: 'github'
