@@ -1,0 +1,11 @@
+package-lock.json
+node_modules/
+.svelte-kit/
+storybook-static/
+design-system-export/
+vendor/
+logo/
+fonts/
+css/
+readme/
+*.md

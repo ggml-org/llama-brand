@@ -3,3 +3,11 @@
 
 # rendered videos stay local
 logo/video/
+
+# Storybook
+node_modules/
+.svelte-kit/
+storybook-static/
+design-system-export/
+debug-storybook.log
+test-results/
