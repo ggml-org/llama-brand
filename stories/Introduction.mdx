@@ -1,0 +1,39 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+<Unstyled>
+<div className="ds-docs">
+
+# Llama brand
+
+<div className="callout">
+
+**The brand for Llama and llama.cpp, drawn with its own files.** The logo, the Llama type family and the colours in this repository, and how posts, posters, release images, link previews and swag are made from them.
+
+</div>
+
+## What is here
+
+- **Agents › Brand guidelines** is `BRAND.md`, the brand book written for agents first. The Llama design system in Claude is exported from it and from these pages by `npm run export:design-system`.
+- **Philosophy › Product** is the reasoning behind what the brand makes and for whom.
+- **Brand** is the logo (its geometry, lockups, usage and every file to download), the type (Llama Sans and Llama Mono, with a tester) and the colour palette.
+- **Communications** is how a post or a poster is put together: its formats and grounds, its elements and modules, the key visuals, and finished applications such as model drops, release notes and link previews.
+
+## What is elsewhere
+
+Llama Chat and its design system live in [llama.cpp](https://github.com/ggml-org/llama.cpp): the components, the UI foundations, and the pages that show the app itself (Communications' Direction, the Mac App Store and Microsoft Store screenshots and scenes, and Philosophy's Ideology and Design) are in its Storybook, under `ui/apps/chat`.
+
+## Working on it
+
+```bash
+npm ci
+npm run storybook            # this Storybook on port 6006
+npm run test:ui              # every story, in a headless browser
+npm run export:brand-readme  # the README's artwork, into readme/
+```
+
+The pages use [`@ggml/llama-ui`](https://www.npmjs.com/package/@ggml/llama-ui), the components and tokens Llama Chat is built from, so what is drawn here looks as it does in the app.
+
+</div>
+</Unstyled>
