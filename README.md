@@ -237,7 +237,7 @@ The llama.cpp web UI's design system builds on the same colours, with the same n
 
 ## Storybook
 
-The brand is drawn in a Storybook with its own files and the components Llama Chat is built from ([`@ggml/llama-ui`](https://www.npmjs.com/package/@ggml/llama-ui)): the logo (its geometry, lockups, usage and every file to download), Llama Sans and Llama Mono, the colours, the reasoning behind what the brand makes, and how posts, posters, release images, link previews and swag are put together. [`BRAND.md`](./BRAND.md) is the brand book for agents, and the Storybook is the source of truth it points to.
+The brand is drawn in a Storybook with its own files and the components Llama Chat is built from ([`@ggml/llama-ui`](https://www.npmjs.com/package/@ggml/llama-ui)): the logo (its geometry, lockups, usage and every file to download), Llama Sans and Llama Mono, the colours, and how posts, posters, store screenshots, release images, link previews and swag are put together. [`BRAND.md`](./BRAND.md) is the brand book for agents, and the Storybook is the source of truth it points to.
 
 ```bash
 npm ci
@@ -247,7 +247,7 @@ npm run export:brand-readme  # this README's artwork, into readme/
 npm run export:design-system # the Llama design system for Claude, into design-system-export/
 ```
 
-The pages that show Llama Chat itself (Communications' direction, the store screenshots and scenes, and the ideology and design philosophy) are in [llama.cpp's Storybook](https://github.com/ggml-org/llama.cpp/tree/master/ui/apps/chat), next to the app.
+Where a page shows Llama Chat itself (the mood board's chat, the store screenshots' scenes), it is an image of the real app, captured in [llama.cpp's Storybook](https://github.com/ggml-org/llama.cpp/tree/master/ui/apps/chat). The reasons behind the products, Philosophy, are there too, next to the apps.
 
 ---
 
