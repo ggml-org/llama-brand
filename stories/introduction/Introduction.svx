@@ -1,0 +1,63 @@
+<!--
+	The Storybook's front page (Introduction): in short, what this Storybook is for, how we think, how the products fit
+	together and how the sections are laid out. Written for people first and readable as plain Markdown by agents too.
+	Set in the Philosophy pages' Editorial; the figure of the products is Product's own.
+-->
+
+<script>
+	import Figure from '../philosophy/Figure.svelte';
+	import Principles from './Principles.svelte';
+	import Products from '../philosophy/figures/Products.svelte';
+	import Sections from './Sections.svelte';
+	import Stack from './Stack.svelte';
+	import Uses from './Uses.svelte';
+</script>
+
+<p class="kicker">Llama · Brand</p>
+
+# Introduction
+
+<p class="lead">This is where the <strong>Llama Brand</strong> is drawn: the icon, Llama Sans and Llama Mono, the colours, and how posts, posters, release images, link previews and swag are made from them. Everything in it is the real file or font from this repository, so what you see here is what ships.</p>
+
+## In short
+
+The brand that every Llama product is built on, next to the files it draws: the logo and its every file to download, the type family, the palette, and the communications made with them, for the people and agents who make Llama's posts, pages and products.
+
+<Figure n={1} caption="The building blocks, from the bottom: the Llama Brand, here, at the base; Llama UI and Llama Chat, in llama.cpp, built on it. The communications are made from the brand and the app.">
+	<Stack />
+</Figure>
+
+## What it's for
+
+<Figure n={2} caption="Four uses. The handover runs with npm run export:design-system.">
+	<Uses />
+</Figure>
+
+## How we think
+
+The short version of **Philosophy**; the reasons are in **Product** here, and in **Ideology** and **Design** in llama.cpp's Storybook.
+
+<Figure n={3} caption="Five ideas, each drawn with the real system: the devices a model runs on, the first run's recommendation, the three places the character lives, a control on its grid and one token chain.">
+	<Principles />
+</Figure>
+
+## How it fits together
+
+<Figure n={4} caption="The products and their repositories. llama-brand, this one, supplies the brand; llama.cpp holds the engine, Llama UI in ui/lib/ui and Llama Chat in ui/apps/chat; the native apps run llama-server and open Llama Chat. llama.app shows models the way Llama Chat does.">
+	<Products />
+</Figure>
+
+The pages that show Llama Chat itself (Communications' direction, the store screenshots and scenes, and Philosophy's Ideology and Design) are in llama.cpp's Storybook, next to the app, and so are Llama UI's components and tokens.
+
+## How it's laid out
+
+<Figure n={5} caption="The sections, in sidebar order.">
+	<Sections />
+</Figure>
+
+## Working in it
+
+- Run it with `npm run storybook`, and every story as a test with `npm run test:ui`.
+- `npm run export:brand-readme` renders the README's artwork from these pages into `readme/`.
+- Pages that are mostly prose, like this one, are `.svx`: Markdown with Svelte components in it.
+- Where a guideline and a story disagree, the story is right: it's the real thing.
