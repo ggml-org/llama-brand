@@ -2,7 +2,8 @@
 
 /**
  * Renders the artwork of this repository's README from its Storybook, so the README shows the design system's
- * own stories rather than a drawing of them: the fonts, the colours and the logo in use.
+ * own stories rather than a drawing of them: the logo in use and the colour table's swatches. The font and colour
+ * cards at the top of the README are drawn by readme/build_readme_art.py instead.
  *
  *   npm run export:brand-readme
  *   npm run export:brand-readme -- --url http://localhost:6006
@@ -11,7 +12,8 @@
  * Each piece is an element (or a group of them) the stories mark with `data-readme="<mark>"`, captured at twice its
  * size on a transparent ground, in light and dark: <out>/readme/<file>-light.png and -dark.png. Pieces that keep
  * their own colours in either mode (the banners, the desktop mockups) are captured once, as <file>.png. The colour
- * table's swatches are written as SVGs from the palette's own swatches (`data-swatch="<token>"`), in sRGB. Without
+ * table's swatches are written as SVGs from the palette's own swatches (`data-swatch="<token>"`), in sRGB, for the
+ * tokens the README's table shows. Without
  * --url it serves a static build, building it first if there is none.
  */
 
@@ -36,22 +38,8 @@ const OUT = path.resolve(process.cwd(), flag('out', ROOT), 'readme');
 const piece = (mark, file = `logo/${mark}`, fixed = false) => ({ file, fixed, mark });
 const STORIES = [
 	{
-		id: 'brand-typography-llama-sans--overview',
-		pieces: [
-			piece('font-hero', 'fonts/llama-sans'),
-			piece('font-weights', 'fonts/llama-sans-weights')
-		]
-	},
-	{
-		id: 'brand-typography-llama-mono--overview',
-		pieces: [
-			piece('font-hero', 'fonts/llama-mono'),
-			piece('font-in-code', 'fonts/llama-mono-in-code')
-		]
-	},
-	{
 		id: 'brand-colors-palette--palette',
-		pieces: [piece('colours', 'colours/palette')],
+		pieces: [],
 		swatches: true,
 		// the palette's own column, so its tiles sit four to a row
 		width: 1240
@@ -130,13 +118,18 @@ async function swatches(page) {
 			const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
 
 			return {
-				hex: `#${[r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('')}`,
+				hex: `#${[r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('')}`.toUpperCase(),
 				token: el.dataset.swatch
 			};
 		});
 	});
 
-	for (const { hex, token } of found) {
+	// only the swatches the README's colour table shows
+	const readme = fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8');
+
+	for (const { hex, token } of found.filter(({ token }) =>
+		readme.includes(`swatches/${token}.svg`)
+	)) {
 		const out = path.join(OUT, `swatches/${token}.svg`);
 
 		fs.mkdirSync(path.dirname(out), { recursive: true });

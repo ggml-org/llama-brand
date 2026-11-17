@@ -9,8 +9,11 @@
 		weight
 	}: { comparing: boolean; grid?: Specimen['grid']; weight: number } = $props();
 
-	const g = grid.guides;
-	const lines = [g.base, g.x, g.cap, g.asc, g.dsc];
+	const lines = $derived.by(() => {
+		const g = grid.guides;
+
+		return [g.base, g.x, g.cap, g.asc, g.dsc];
+	});
 	const cells = $derived(grid.cells[String(weight)]);
 	// cells arrive in group order; split them back into the groups
 	const sets = $derived.by(() => {

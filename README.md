@@ -7,7 +7,7 @@ logo/     the icon, the lockups, the covers, app icons and social profiles as SV
 fonts/    Llama Sans and Llama Mono, their build scripts and the specimen
 css/      the colours, the font faces, and communications' grounds and type scale
 readme/   this README's artwork: cards built from the fonts and the colours, and the logo in use, rendered from the Storybook
-stories/  the Storybook: the brand, its philosophy and communications, drawn with the files above
+stories/  the Storybook: the brand and communications, drawn with the files above
 BRAND.md  the brand book, written for agents first
 ```
 
@@ -74,7 +74,7 @@ Every SVG also comes as a lossless WebP under [`logo/webp/`](./logo/webp) and a 
 
 ## Using the logo
 
-These images are rendered from the Logo stories in the design system's Storybook, in llama.cpp's `tools/ui` (`npm run export:brand-readme -- --out <this repo>`), so they show the real components.
+These images are rendered from the Logo stories in this repository's [Storybook](#storybook) (`npm run export:brand-readme`), so they show the real components. The splash screens come from llama.cpp's Storybook, where Llama Chat draws them.
 
 ### How the lockups are built
 
