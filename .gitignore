@@ -9,5 +9,6 @@ node_modules/
 .svelte-kit/
 storybook-static/
 design-system-export/
+design-exports/
 debug-storybook.log
 test-results/

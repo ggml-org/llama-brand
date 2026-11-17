@@ -66,6 +66,20 @@ export const FORMATS = {
 		use: 'Microsoft Store screenshots, four or more',
 		width: 1920
 	},
+	/** the Store's Spotlight: Microsoft sets its header and subheader in white over the left part */
+	msSpotlight: {
+		height: 1080,
+		name: 'Spotlight hero 16:9',
+		use: 'The Spotlight on the Microsoft Store’s Apps and AI Hub pages; exported at 2x, 3840 × 2160',
+		width: 1920
+	},
+	/** the AI Hub's inline spotlight: a centred picture on a transparent ground, the copy laid out beside it */
+	msAiHub: {
+		height: 1080,
+		name: 'AI Hub inline 16:9',
+		use: 'The inline spotlight on the Microsoft Store’s AI Hub page; exported at 2x, 3840 × 2160',
+		width: 1920
+	},
 	msTile: { height: 300, name: 'App tile icon', use: 'The Microsoft Store’s tile', width: 300 },
 	og: { height: 630, name: 'Open Graph', use: 'Link previews on llama.app', width: 1200 },
 	portrait: { height: 1350, name: 'Portrait 4:5', use: 'Instagram, LinkedIn', width: 1080 },
@@ -456,6 +470,65 @@ export const microsoftStore: MicrosoftStoreCopy = {
 		lede: 'Every version says whether it fits your PC, from what it needs and what your PC has.'
 	}
 };
+
+/**
+ * The Microsoft Store's Spotlight and AI Hub placements (for Ignite 2026). Microsoft sets the Spotlight's header (at
+ * most 12 uppercase W's wide) and subheader (16) over the picture, and lays the AI Hub line (under 35 characters,
+ * spaces included) beside its picture. Each set leads with why (it's yours, private, on your PC), not what
+ */
+export interface SpotlightCopy {
+	aiHub: string;
+	header: string;
+	id: string;
+	/** what it leans on */
+	note: string;
+	subheader: string;
+}
+
+export const microsoftSpotlight: SpotlightCopy[] = [
+	{
+		aiHub: 'Your conversations stay on your PC.',
+		header: 'Llama',
+		id: 'A',
+		note: 'Ownership, then privacy',
+		subheader: 'Your AI, your PC'
+	},
+	{
+		aiHub: 'Private AI that runs on your PC.',
+		header: 'Llama',
+		id: 'B',
+		note: 'Privacy and place',
+		subheader: 'Private local AI'
+	},
+	{
+		aiHub: 'Chat with AI on your PC, offline.',
+		header: 'Llama',
+		id: 'C',
+		note: 'Place, then offline',
+		subheader: 'Runs on your PC'
+	},
+	{
+		aiHub: 'Free, private AI. No account.',
+		header: 'Llama',
+		id: 'D',
+		note: 'Privacy, with price',
+		subheader: 'Stays on your PC'
+	},
+	{
+		aiHub: 'Run AI on your PC. Even offline.',
+		header: 'Llama',
+		id: 'E',
+		note: 'Privacy as what you do',
+		subheader: 'Chat privately'
+	},
+	{
+		aiHub: 'Open models on your PC. No account.',
+		header: 'Llama',
+		id: 'F',
+		note: 'Ownership, with open models',
+		subheader: 'AI that’s yours'
+	}
+];
 
 /**
  * The Mac App Store listing: the same voice as the Microsoft Store's, for Llama for Mac and what it does that the
