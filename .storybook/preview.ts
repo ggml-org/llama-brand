@@ -22,8 +22,8 @@ const preview: Preview = {
 		},
 
 		options: {
-			// sidebar sections: the introduction, the brand book for agents, the brand (logo, type, colour),
-			// communications, then the scrapbook of proposals
+			// sidebar sections: the introduction, the brand book for agents, the brand (logo, type, colour), then
+			// communications
 			storySort: {
 				order: [
 					'Introduction',
@@ -74,9 +74,7 @@ const preview: Preview = {
 							'Store scenes',
 							'Swag'
 						]
-					],
-					'Scrapbook',
-					['Communications']
+					]
 				]
 			}
 		},
