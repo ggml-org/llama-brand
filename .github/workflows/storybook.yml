@@ -1,0 +1,101 @@
+name: Storybook
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  storybook:
+    name: Check, test and build
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run check
+
+      - name: Formatting
+        run: npm run lint
+
+      - name: Install Playwright's Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Story tests
+        run: npm run test:ui -- --run
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Keep the build for the Space
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v7
+        with:
+          name: storybook-static
+          path: storybook-static/
+          retention-days: 7
+
+  # every change on master publishes the fresh build to the Hugging Face Space, replacing what was there
+  deploy:
+    name: Deploy to the Hugging Face Space
+    needs: storybook
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    env:
+      SPACE: ggml-org/Llama-brand-storybook
+    steps:
+      - name: Download the build
+        uses: actions/download-artifact@v8
+        with:
+          name: storybook-static
+          path: storybook-static/
+
+      - name: Write the Space's card
+        run: |
+          cat > storybook-static/README.md <<'EOF'
+          ---
+          title: Llama brand Storybook
+          emoji: 🦙
+          colorFrom: gray
+          colorTo: gray
+          sdk: static
+          pinned: false
+          ---
+
+          The Llama brand's Storybook: the logo, Llama Sans and Llama Mono, the colours and communications.
+          Built from [ggml-org/llama-brand](https://github.com/ggml-org/llama-brand) on every change to master.
+          EOF
+
+      - name: Install the Hugging Face CLI
+        run: |
+          python3 -m venv .venv-hf
+          .venv-hf/bin/pip install huggingface_hub==1.28.0
+
+      - name: Upload to the Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::error::The HF_TOKEN secret is not set: it needs write access to $SPACE"
+            exit 1
+          fi
+          .venv-hf/bin/hf upload "$SPACE" storybook-static . \
+            --repo-type space \
+            --delete '*' \
+            --commit-message "Storybook from ggml-org/llama-brand@${GITHUB_SHA::7}"

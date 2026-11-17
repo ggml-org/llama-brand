@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+/* the stories are all this project has, so tailwind scans them */
+@source '../stories';
+@source '../.storybook';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@import 'tw-animate-css';
+/* Llama UI's theme (@ggml-org/llama-ui): fonts, tokens, surfaces, the shadcn names and the base styles
+   its components read. By path rather than as @ggml-org/llama-ui/theme.css: prettier's Tailwind
+   plugin reads this file too, and it knows no aliases */
+@import '../node_modules/@ggml-org/llama-ui/dist/styles/theme.css';
+
+@layer base {
+	body {
+		scrollbar-width: thin;
+		scrollbar-gutter: stable;
+	}
+}
