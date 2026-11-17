@@ -13,10 +13,13 @@ concurrency:
 permissions:
   contents: read
 
+# both jobs run on Hugging Face Jobs (8 vCPU, 32 GB, ubuntu:24.04), through ggml-org's jobs-actions dispatcher, as
+# llama.cpp's do: they don't wait in line for the GitHub-hosted runners the organization's repositories share. The
+# image is bare Ubuntu with curl, git and sudo; setup-node and Playwright's --with-deps install the rest.
 jobs:
   storybook:
     name: Check, test and build
-    runs-on: ubuntu-24.04
+    runs-on: hf-jobs-cpu-upgrade
     steps:
       - uses: actions/checkout@v6
 
@@ -56,7 +59,7 @@ jobs:
     name: Deploy to the Hugging Face Space
     needs: storybook
     if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
-    runs-on: ubuntu-24.04
+    runs-on: hf-jobs-cpu-upgrade
     env:
       SPACE: ggml-org/Llama-brand-storybook
     steps:
@@ -84,6 +87,8 @@ jobs:
 
       - name: Install the Hugging Face CLI
         run: |
+          sudo apt-get update -qq
+          sudo apt-get install -qq -y --no-install-recommends python3-venv
           python3 -m venv .venv-hf
           .venv-hf/bin/pip install huggingface_hub==1.28.0
 
