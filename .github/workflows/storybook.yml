@@ -58,7 +58,7 @@ jobs:
     if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     env:
-      SPACE: ggml-org/Llama-brand-storybook
+      SPACE: ggml-org/llama-brand-storybook
     steps:
       - name: Download the build
         uses: actions/download-artifact@v8

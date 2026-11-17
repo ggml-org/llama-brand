@@ -250,7 +250,7 @@ npm run export:ms-spotlight  # the Microsoft Store Spotlight and AI Hub pictures
 
 Where a page shows Llama Chat itself (the mood board's chat, the store screenshots' scenes), it is an image of the real app, captured in [llama.cpp's Storybook](https://github.com/ggml-org/llama.cpp/tree/master/ui/apps/chat). The reasons behind the products, Philosophy, are there too, next to the apps.
 
-Every change on master is checked, tested and built by the Storybook workflow, and the build is published to the Hugging Face Space [ggml-org/Llama-brand-storybook](https://huggingface.co/spaces/ggml-org/Llama-brand-storybook). The workflow needs an `HF_TOKEN` secret with write access to it.
+Every change on master is checked, tested and built by the Storybook workflow, and the build is published to the Hugging Face Space [ggml-org/llama-brand-storybook](https://huggingface.co/spaces/ggml-org/llama-brand-storybook). The workflow needs an `HF_TOKEN` secret with write access to it.
 
 ---
 
