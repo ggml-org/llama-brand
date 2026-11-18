@@ -123,8 +123,8 @@ wide ones 12, with a gutter of ½u.
 | Billboard 3:1         | 2400 × 800  | Banners, screens at events                                            | 50    |
 | Super hero art 16:9   | 1920 × 1080 | The top of the Microsoft Store listing; artwork with no words         | 45    |
 | Store screenshot 16:9 | 1920 × 1080 | Microsoft Store screenshots: a centred headline over the real app     | 45    |
-| Spotlight hero 16:9   | 1920 × 1080 | The Microsoft Store's Spotlight; exported at 2x, kept under 2 MB      | 45    |
-| AI Hub inline 16:9    | 1920 × 1080 | The Store's AI Hub: a centred picture on a transparent ground, at 2x  | 45    |
+| Spotlight hero 16:9   | 1920 × 1080 | The Microsoft Store's Spotlight; the Store's text over the left       | 45    |
+| AI Hub inline 16:9    | 1920 × 1080 | The Store's AI Hub: a centred picture on a transparent ground         | 45    |
 | Poster art 2:3        | 720 × 1080  | The Microsoft Store's main logo: the icon over the name               | 30    |
 | App tile icon         | 300 × 300   | The Microsoft Store's tile: the icon alone                            | 12.5  |
 | Mac App Store 16:10   | 2880 × 1800 | Mac App Store screenshots: a 1440 × 900 screen at 2x                  | 75    |
@@ -183,15 +183,11 @@ quarter. The opener and the chat come in several versions, to compare or to A/B 
 
 ### Store Spotlight and AI Hub
 
-The Microsoft Store's Spotlight sets the app's name and a short line in white over the left part of the picture, so
-the hero stands on the night sky and keeps to the right: Llama for Windows' quick chat with a real conversation about
-something people would rather keep on their own PC (a bank statement, meeting notes, a CV), the app tile on its
-corner, the privacy card in the top right corner, and the tray flyout open from the taskbar, over a dot grid that
-fades out towards the Store's text. It shows why to use Llama, not what it is. The privacy card says it at a glance: a
-PC with the way to the cloud closed in cinder, over one line. The AI Hub's picture is the quick chat, the tile and
-the card, centred on a transparent ground. No conversation is about health, and none reads as legal or financial
-advice. The Store's own copy is short: a header of at most 12 characters, a subheader of at most 16, and an AI Hub
-line under 35.
+The Microsoft Store's Spotlight (and its Ignite 2026 collection) uses one picture, made by hand rather than from the
+blocks here: a laptop with Llama under a glass dome, offline and locked, with a model chosen on Hugging Face beside
+it. It says that the model runs on your own computer and stays there. The Store sets the app's name and a short line
+in white over the left part, so the hero keeps to the right on a dark ground. The AI Hub's picture is the same scene
+on a transparent ground, which the Store lays its copy beside. Both are in Storybook as they were sent.
 
 The Mac App Store's set is the same voice at 16:10, drawn after Llama for Mac in light mode: its menu (rebuilt from
 the app's source) dropped from the menu bar, Llama Chat in a Safari web app's window, and the menu's QR code beside a

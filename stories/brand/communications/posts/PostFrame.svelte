@@ -20,22 +20,11 @@
 		label: string;
 		overlay?: boolean;
 		tone: Ground;
-		/** no ground behind it (the AI Hub's picture): the ground's inks stay, its background goes */
-		transparent?: boolean;
 		/** a fixed unit in pixels, for a specimen tile sized to its content rather than a format */
 		unit?: number;
 	}
 
-	let {
-		actual = false,
-		children,
-		format,
-		label,
-		overlay = false,
-		tone,
-		transparent = false,
-		unit
-	}: Props = $props();
+	let { actual = false, children, format, label, overlay = false, tone, unit }: Props = $props();
 
 	let column = $state(0);
 	const g = $derived(grid(format, unit));
@@ -46,7 +35,6 @@
 <!-- never wider than the piece, which is shown at most at its real size -->
 <div
 	bind:clientWidth={column}
-	style:box-shadow={transparent ? 'none' : undefined}
 	style:height={actual ? undefined : `${format.height * scale}px`}
 	style:max-width={actual ? undefined : `${format.width}px`}
 	class={['fit', { actual }]}
@@ -61,7 +49,6 @@
 		style:height="{format.height}px"
 		style:transform="scale({scale})"
 		style:width="{format.width}px"
-		style:background={transparent ? 'none' : undefined}
 		aria-label={label}
 		class="post ground ground-{tone} shape-{g.shape}"
 	>

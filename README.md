@@ -245,7 +245,6 @@ npm run storybook            # on port 6006
 npm run test:ui              # every story, in a headless browser
 npm run export:brand-readme  # this README's artwork, into readme/
 npm run export:design-system # the Llama design system for Claude, into design-system-export/
-npm run export:ms-spotlight  # the Microsoft Store Spotlight and AI Hub pictures, into design-exports/ (Storybook running)
 ```
 
 Where a page shows Llama Chat itself (the mood board's chat, the store screenshots' scenes), it is an image of the real app, captured in [llama.cpp's Storybook](https://github.com/ggml-org/llama.cpp/tree/master/ui/apps/chat). The reasons behind the products, Philosophy, are there too, next to the apps.

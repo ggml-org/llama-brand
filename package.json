@@ -31,8 +31,7 @@
 		"lint": "prettier --check .",
 		"test:ui": "vitest --project=ui",
 		"export:brand-readme": "node scripts/export-brand-readme.mjs",
-		"export:design-system": "node scripts/export-design-system.mjs",
-		"export:ms-spotlight": "node scripts/export-ms-spotlight.mjs"
+		"export:design-system": "node scripts/export-design-system.mjs"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "5.5.1",
