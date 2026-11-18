@@ -10,11 +10,6 @@ import documentOnMac from './app/scenes/document-on-mac.png';
 import document from './app/scenes/document.png';
 import quickChat from './app/scenes/quick-chat.png';
 import screenshot from './app/scenes/screenshot.png';
-import quickChatChat from './app/scenes/quick-chat/chat.png';
-import quickChatCv from './app/scenes/quick-chat/cv.png';
-import quickChatLeave from './app/scenes/quick-chat/leave.png';
-import quickChatNotes from './app/scenes/quick-chat/notes.png';
-import quickChatStatement from './app/scenes/quick-chat/statement.png';
 
 /** the model the chat runs: a small one from llama.app's catalog, the kind an ordinary PC runs well */
 export const SCENE_MODEL_ID = 'ggml-org/gemma-4-E4B-it-GGUF:Q4_K_M';
@@ -32,18 +27,3 @@ export const MAC_SCENES = {
 } as const;
 
 export type MacScene = keyof typeof MAC_SCENES;
-
-/**
- * the conversations the Store's Spotlight and AI Hub pictures show in the quick chat, captured at its 788 × 660 (a
- * bank statement, meeting notes, a CV, a note about time off, the note to a landlord): papers people would rather keep
- * on their own PC, and nothing about health or that reads as legal or financial advice
- */
-export const QUICK_CHAT_SCENES = {
-	chat: quickChatChat,
-	cv: quickChatCv,
-	leave: quickChatLeave,
-	notes: quickChatNotes,
-	statement: quickChatStatement
-} as const;
-
-export type QuickChatScene = keyof typeof QUICK_CHAT_SCENES;
