@@ -11,18 +11,18 @@ stories/  the Storybook: the brand and communications, drawn with the files abov
 BRAND.md  the brand book, written for agents first
 ```
 
-Install it from GitHub and import files by path:
+Install it from npm and import files by path:
 
 ```bash
-npm i github:ggml-org/llama-brand
+npm i @ggml-org/llama-brand
 ```
 
 ```css
-@import 'llama-brand/css/brand.css';
+@import '@ggml-org/llama-brand/css/brand.css';
 ```
 
 ```js
-import logo from 'llama-brand/logo/svg/lockup/llama/logo-llama-light.svg';
+import logo from '@ggml-org/llama-brand/logo/svg/lockup/llama/logo-llama-light.svg';
 ```
 
 ---

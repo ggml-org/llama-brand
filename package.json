@@ -1,20 +1,23 @@
 {
-	"name": "llama-brand",
+	"name": "@ggml-org/llama-brand",
 	"version": "0.1.0",
 	"description": "Official brand assets for Llama.app and Llama.cpp: the logo, the fonts and the core CSS",
-	"private": true,
-	"license": "CC-BY-NC-4.0",
+	"license": "CC-BY-NC-4.0 AND OFL-1.1",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/ggml-org/llama-brand.git"
 	},
 	"files": [
+		"BRAND-USAGE.md",
 		"css/*.css",
 		"fonts/OFL.txt",
 		"fonts/variable/*.ttf",
 		"fonts/static/*.ttf",
 		"logo/**/*.svg"
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"exports": {
 		"./*": "./*"
 	},
