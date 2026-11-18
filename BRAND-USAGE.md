@@ -1,6 +1,6 @@
 # Brand usage
 
-The assets in this repository are licensed under CC BY-NC 4.0, see [`LICENSE`](./LICENSE).
+The logo assets in this repository are licensed under CC BY-NC 4.0, see [`LICENSE`](./LICENSE). The CSS is under the MIT License and the fonts under the SIL Open Font License 1.1, so this permission is about the marks, the fonts' icon glyphs included.
 
 In addition, and notwithstanding the NonCommercial term, ggml-org grants everyone permission to reproduce and redistribute these marks, including commercially and including as part of software distributions, packages, and operating systems, for the purpose of identifying or referring to Llama.app and Llama.cpp.
 

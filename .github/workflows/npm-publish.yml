@@ -1,0 +1,108 @@
+name: npm publish
+
+# Publishes @ggml-org/llama-brand to npm.
+#
+# The version in package.json is the release. A commit on master with a version that npm does not have
+# publishes it. A commit that changes the files without a version bump publishes nothing and says so on the run.
+#
+# Auth: no npm token is stored here. The job exchanges its OIDC identity for one (npm trusted publishing) and
+# signs the tarball with a provenance attestation.
+#
+# One-time setup: npm can only trust a publisher for a package that exists, so the first version is published
+# by hand (npm publish from a clean checkout of master). Then, on the package, Settings, Trusted Publisher,
+# GitHub Actions: organization ggml-org, repository llama-brand, workflow file npm-publish.yml, Environment
+# left blank.
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/npm-publish.yml'
+      - 'package.json'
+      - 'BRAND-USAGE.md'
+      - 'LICENSE'
+      - 'README.md'
+      - 'css/**'
+      - 'fonts/**'
+      - 'logo/**'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Pack, but do not publish'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  # never cancel a run mid-publish: a published version cannot be taken back
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish @ggml-org/llama-brand
+    if: github.repository == 'ggml-org/llama-brand' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+
+      - name: Check npm can publish with an OIDC token
+        run: |
+          npm -v
+          node -e '
+            const [major, minor, patch] = process.argv[1].split(".").map(Number);
+            if (major < 11 || (major === 11 && (minor < 5 || (minor === 5 && patch < 1)))) {
+              console.error(`npm ${process.argv[1]} cannot publish with trusted publishing: 11.5.1 or newer is needed`);
+              process.exit(1);
+            }
+          ' "$(npm -v)"
+
+      - name: Compare the version with npm
+        id: version
+        run: |
+          name=$(node -p 'require("./package.json").name')
+          version=$(node -p 'require("./package.json").version')
+          seen=$(npm view "$name@$version" version 2>/dev/null || true)
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [ "$seen" = "$version" ]; then
+            echo "::notice::$name@$version is already on npm. Bump the version in package.json to publish."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Show what the tarball holds
+        run: npm pack --dry-run --ignore-scripts
+
+      - name: Publish
+        if: steps.version.outputs.publish == 'true' && inputs.dry_run != true
+        run: npm publish --provenance --ignore-scripts
+
+      - name: Verify it landed
+        if: steps.version.outputs.publish == 'true' && inputs.dry_run != true
+        env:
+          NAME: ${{ steps.version.outputs.name }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          # the registry can serve a new version some time after publish returns
+          for try in 1 2 3 4 5 6; do
+            if [ "$(npm view "$NAME@$VERSION" version 2>/dev/null || true)" = "$VERSION" ]; then
+              npm view "$NAME@$VERSION" dist-tags version dist.integrity
+              exit 0
+            fi
+            echo "not visible yet (attempt $try of 6)"
+            sleep 10
+          done
+          echo "::error::$NAME@$VERSION published without error but is not visible on npm. Check the package before publishing again."
+          exit 1
