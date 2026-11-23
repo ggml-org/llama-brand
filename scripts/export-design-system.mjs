@@ -24,9 +24,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-// Llama UI, where the tokens and the fonts live
+// Llama UI, where the fonts' web files (woff2) live
 const UI_LIB = path.resolve(ROOT, 'node_modules/@ggml-org/llama-ui/dist');
-const SPACE = 'https://huggingface.co/spaces/ggml-org/llama-storybook';
+const SPACE = 'https://huggingface.co/spaces/ggml-org/llama-brand-storybook';
 const args = process.argv.slice(2);
 const flag = (name, fallback) => {
 	const i = args.indexOf(`--${name}`);
@@ -143,7 +143,8 @@ const APP_ICONS = [
 ];
 
 function tokens() {
-	const primitives = fs.readFileSync(path.join(UI_LIB, 'styles/tokens/primitives.css'), 'utf8');
+	// the brand's colours come from this repository's own css/colors.css, which Llama UI takes them from too
+	const colors = fs.readFileSync(path.join(ROOT, 'css/colors.css'), 'utf8');
 	const grounds = fs.readFileSync(
 		path.join(ROOT, 'stories/brand/communications/posts/grounds.css'),
 		'utf8'
@@ -161,7 +162,7 @@ function tokens() {
 		);
 	};
 	const plain = (v) => /^(#[0-9a-f]{3,8}|rgba?\([^()]*\)|oklch\([^()]*\))$/i.test(v);
-	const primitive = Object.fromEntries(declared(primitives, ''));
+	const primitive = Object.fromEntries(declared(colors, ''));
 	// a colour as the tokens can hold it: a plain value, an alias of a primitive, or a primitive mixed with
 	// transparent written as that oklch colour with its alpha
 	const resolve = (value) => {
@@ -177,11 +178,12 @@ function tokens() {
 	const color = [];
 	const add = (name, value, usage) => color.push({ name, usage, value });
 
-	for (const [name, value] of declared(primitives, 'neutral-'))
+	for (const [name, value] of declared(colors, 'neutral-'))
 		add(name, value, 'A neutral grey. Grounds, inks and hairlines come from these.');
-	for (const [name, value] of declared(primitives, 'sand-'))
+	for (const [name, value] of declared(colors, 'sand-'))
 		add(name, value, 'Sand, the warm neutral: the sand ground (sand-50) and its ink (sand-900).');
-	for (const [name, value] of declared(primitives, 'art-'))
+	// a colour token holds one plain colour: the skies' gradients are given as their stops, below
+	for (const [name, value] of declared(colors, 'art-').filter(([, v]) => plain(v)))
 		add(
 			name,
 			value,
@@ -324,9 +326,9 @@ function tokens() {
 	return {
 		color: { themes: [{ id: 'light', name: 'Light' }], tokens: color },
 		meta: {
-			note: "Exported from ggml-org/llama-brand (@ggml-org/llama-ui's styles/tokens/primitives.css, the communications grounds and type scale) by scripts/export-design-system.mjs.",
+			note: 'Exported from ggml-org/llama-brand (css/colors.css, the communications grounds and type scale) by scripts/export-design-system.mjs.',
 			package: 'llama-brand',
-			repo: 'ggml-org/llama.cpp',
+			repo: 'ggml-org/llama-brand',
 			source: 'github'
 		},
 		name: 'Llama',
@@ -380,7 +382,7 @@ function readme(examples) {
 - **Fonts**: Llama Sans and Llama Mono. **Tokens**: the colours, the type scale at two units, the units per format
   and the radii.
 
-The Storybook these come from: ${SPACE} (Communications, Brand, Philosophy). Exported from llama.cpp's
+The Storybook these come from: ${SPACE} (Communications, Brand). Exported from
 \`ggml-org/llama-brand\` by \`npm run export:design-system\`; change the Storybook or \`BRAND.md\`, not this system.
 `;
 }
